@@ -42,9 +42,9 @@ namespace COMP003B.Assignment7.Controllers
 
             // Get the movies the actor was in
 
-            ViewBag.Movies = from a in _context.Actors
+            ViewBag.Directors = from a in _context.Actors
                              join m in _context.Movies on a.ActorId equals m.ActorID
-                             join d in _context.Directors on m.DirectorID equals d.DirectorId
+                             join d in _context.Directors on m.DirectorID equals d.DirectorID
                              where a.ActorId == id
                              select d;
 

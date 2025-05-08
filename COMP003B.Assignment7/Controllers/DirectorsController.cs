@@ -34,7 +34,7 @@ namespace COMP003B.Assignment7.Controllers
             }
 
             var director = await _context.Directors
-                .FirstOrDefaultAsync(m => m.DirectorId == id);
+                .FirstOrDefaultAsync(m => m.DirectorID == id);
             if (director == null)
             {
                 return NotFound();
@@ -44,8 +44,8 @@ namespace COMP003B.Assignment7.Controllers
 
             ViewBag.Actors = from a in _context.Actors
                              join m in _context.Movies on a.ActorId equals m.ActorID
-                             join d in _context.Directors on m.DirectorID equals d.DirectorId
-                             where d.DirectorId == id
+                             join d in _context.Directors on m.DirectorID equals d.DirectorID
+                             where d.DirectorID == id
                              select a;
 
             return View(director);
@@ -96,7 +96,7 @@ namespace COMP003B.Assignment7.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("DirectorId,Name")] Director director)
         {
-            if (id != director.DirectorId)
+            if (id != director.DirectorID)
             {
                 return NotFound();
             }
@@ -110,7 +110,7 @@ namespace COMP003B.Assignment7.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DirectorExists(director.DirectorId))
+                    if (!DirectorExists(director.DirectorID))
                     {
                         return NotFound();
                     }
@@ -133,7 +133,7 @@ namespace COMP003B.Assignment7.Controllers
             }
 
             var director = await _context.Directors
-                .FirstOrDefaultAsync(m => m.DirectorId == id);
+                .FirstOrDefaultAsync(m => m.DirectorID == id);
             if (director == null)
             {
                 return NotFound();
@@ -159,7 +159,7 @@ namespace COMP003B.Assignment7.Controllers
 
         private bool DirectorExists(int id)
         {
-            return _context.Directors.Any(e => e.DirectorId == id);
+            return _context.Directors.Any(e => e.DirectorID == id);
         }
     }
 }

@@ -10,6 +10,6 @@
 
         public virtual ICollection<Movie> Movies { get; set; }
 
-        public int Age { get; set; }
+
     }
 }

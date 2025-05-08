@@ -34,7 +34,7 @@ namespace COMP003B.Assignment7.Controllers
             }
 
             var actor = await _context.Actors
-                .FirstOrDefaultAsync(m => m.ActorId == id);
+                .FirstOrDefaultAsync(m => m.ActorID == id);
             if (actor == null)
             {
                 return NotFound();
@@ -43,9 +43,9 @@ namespace COMP003B.Assignment7.Controllers
             // Get the movies the actor was in
 
             ViewBag.Directors = from a in _context.Actors
-                             join m in _context.Movies on a.ActorId equals m.ActorID
+                             join m in _context.Movies on a.ActorID equals m.ActorID
                              join d in _context.Directors on m.DirectorID equals d.DirectorID
-                             where a.ActorId == id
+                             where a.ActorID == id
                              select d;
 
             return View(actor);
@@ -96,7 +96,7 @@ namespace COMP003B.Assignment7.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("ActorId,Name,Age")] Actor actor)
         {
-            if (id != actor.ActorId)
+            if (id != actor.ActorID)
             {
                 return NotFound();
             }
@@ -110,7 +110,7 @@ namespace COMP003B.Assignment7.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!ActorExists(actor.ActorId))
+                    if (!ActorExists(actor.ActorID))
                     {
                         return NotFound();
                     }
@@ -133,7 +133,7 @@ namespace COMP003B.Assignment7.Controllers
             }
 
             var actor = await _context.Actors
-                .FirstOrDefaultAsync(m => m.ActorId == id);
+                .FirstOrDefaultAsync(m => m.ActorID == id);
             if (actor == null)
             {
                 return NotFound();
@@ -159,7 +159,7 @@ namespace COMP003B.Assignment7.Controllers
 
         private bool ActorExists(int id)
         {
-            return _context.Actors.Any(e => e.ActorId == id);
+            return _context.Actors.Any(e => e.ActorID == id);
         }
     }
 }

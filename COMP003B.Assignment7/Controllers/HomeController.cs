@@ -23,6 +23,25 @@ namespace COMP003B.Assignment7.Controllers
             return View();
         }
 
+        public IActionResult Actors()
+        {
+            return View();
+
+        }
+
+        public IActionResult Directors()
+        {
+            return View();
+
+
+        }
+
+        public IActionResult Movies()
+        {
+            return View();
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

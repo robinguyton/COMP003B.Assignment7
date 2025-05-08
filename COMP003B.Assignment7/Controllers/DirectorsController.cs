@@ -43,7 +43,7 @@ namespace COMP003B.Assignment7.Controllers
             // Get the actors the director directed
 
             ViewBag.Actors = from a in _context.Actors
-                             join m in _context.Movies on a.ActorId equals m.ActorID
+                             join m in _context.Movies on a.ActorID equals m.ActorID
                              join d in _context.Directors on m.DirectorID equals d.DirectorID
                              where d.DirectorID == id
                              select a;
